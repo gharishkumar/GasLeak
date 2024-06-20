@@ -1,5 +1,6 @@
 #sudo pip3 install gpiozero adafruit-circuitpython-ads1x15
-from gpiozero import Button
+#sudo nano /boot/firmware/config.txt enable_uart=1
+from gpiozero import Servo
 
 import board
 import time
@@ -21,6 +22,9 @@ ads = ADS.ADS1115(i2c)
 # Define the analog input channel
 channel = AnalogIn(ads, ADS.P0)
  
+servo = Servo(6)
+servo.min()
+
 def formatDegreesMinutes(coordinates, digits):
     parts = coordinates.split(".")
     if (len(parts) != 2):
